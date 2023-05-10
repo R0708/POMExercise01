@@ -5,6 +5,9 @@ import org.openqa.selenium.By;
 public class RegisterPage extends Utils{
      private By FirstName = By.id("FirstName");
      private By LastName = By.id("LastName");
+     private By dayOfBirth = By.name("DateOfBirthDay");
+     private By monthOfBirth = By.name("DateOfBirthMonth");
+     private By yearOfBirth = By.name("DateOfBirthYear");
      private By Email = By.id("Email");
      private By Password = By.id("Password");
      private By ConfirmPassword = By.id("ConfirmPassword");
@@ -19,6 +22,10 @@ public class RegisterPage extends Utils{
 
         //type last name
         typeText(LastName,"patel");
+
+        selectOptionByIndex(dayOfBirth,10);
+        selectOptionByText(monthOfBirth,"August");
+        selectOptionByValue(yearOfBirth,"1924");
 
         //type email address
         typeText(Email,"jiya"+timestamp.getTime()+"@gmail.com");

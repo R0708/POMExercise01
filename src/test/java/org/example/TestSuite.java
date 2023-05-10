@@ -1,19 +1,6 @@
 package org.example;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.sql.Timestamp;
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class TestSuite extends BaseTest {
 
@@ -38,6 +25,10 @@ public class TestSuite extends BaseTest {
     ReferToFriendLoginPage referToFriendLoginPage = new ReferToFriendLoginPage();
     ReferToFriendProduct referToFriendProduct = new ReferToFriendProduct();
     ReferAFriendResultPage referAFriendResultPage = new ReferAFriendResultPage();
+    ProductName productName = new ProductName();
+    NopCommerceNewReleasePage nopCommerceNewReleasePage = new NopCommerceNewReleasePage();
+    BuildYourOwnComputer buildYourOwnComputer = new BuildYourOwnComputer();
+    FacebookPage facebookPage = new FacebookPage();
 
 
 
@@ -49,6 +40,7 @@ public class TestSuite extends BaseTest {
         registerPage.enterRegistrationDetails();
         //verify register success or not
         registerResultPage.VerifyUserRegisteredSuccessfully();
+        
 
     }
     @Test
@@ -112,6 +104,54 @@ public class TestSuite extends BaseTest {
         referAFriendResultPage.VerifyUserAbleToReferAProductToAFriend();
 
     }
+    @Test
+    public void VerifyProductName(){
+        //click on home page
+        productName.FeaturedProduct();
+    }
+    @Test
+    public void verifySearchAlert(){
+        //click on home page
+        homePage.verifySearchAlertMessage();
+    }
+    @Test
+    public void verifyUserShouldAbleToSelectAndVerifyCurrencyAccordingly(){
+        //click on home page
+        homePage.verifyCurrencyAccordingly();
+    }
+    @Test
+    public void verifyUserShouldAbleToSearchForGivenProductSuccessfully(){
+        //click on home page
+        homePage.verifySearchFunctionalityWorkingFine();
+    }
+    @Test
+    public void VerifyUserShouldAbleToWriteACommentsSuccessfully(){
+        //click on home page
+        homePage.goToNopCommerceNewRelease();
+        //go to nopCommerce page and verify comments
+        nopCommerceNewReleasePage.verifyNopCommerceNewRelease();
+
+    }
+    @Test
+    public void verifyGuestUserShouldAbleToCheckOutSuccessfully(){
+        //click on home page
+        homePage.goToBuildYourOwnComputer();
+        //fill all details on build your own computer
+        buildYourOwnComputer.VerifyUserShouldAbleToFillDetailsForBuildIt();
+
+
+    }
+    @Test
+    public void VerifyUserShouldAbleToVoteAlter(){
+        homePage.verifyVoteAlter();
+    }
+    @Test
+    public void verifyFacebookIsWorkingAsPerUserRequirements(){
+        homePage.clickOnFacebookFollowUs();
+        facebookPage.goToFacebookInNopCommerce();
+        homePage.welcomeToOurStore();
+    }
+
 
 }
 
